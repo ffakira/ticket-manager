@@ -129,6 +129,10 @@ class PdfController extends AbstractController {
         };
     }
 
+    /**
+     * @TODO include a random hash, to verify the data have
+     * not been tampered via the database
+     */
     private function encryptData(string $data): string {
         $key = $this->getParameter('qr_code_encryption_key');
         $alg = 'aes-256-cbc';
