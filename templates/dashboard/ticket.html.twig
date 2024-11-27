@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	eventbits | Create Ticket
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<h1>Create Ticket</h1>
+		<p>Fill in the form below to create a ticket.</p>
+		{{ form_start(form) }}
+		<div class="form-group mb-4">
+			{{ form_label(form.name) }}
+			{{ form_widget(form.name) }}
+			{{ form_errors(form.name) }}
+		</div>
+		<div class="form-group mb-4">
+			{{ form_label(form.event) }}
+			{{ form_widget(form.event) }}
+			{{ form_errors(form.event) }}
+		</div>
+		<div class="form-group mb-4">
+			{{ form_label(form.price) }}
+			{{ form_widget(form.price) }}
+			{{ form_errors(form.price) }}
+		</div>
+		<div class="form-group mb-4">
+			{{ form_label(form.currency) }}
+			{{ form_widget(form.currency) }}
+			{{ form_errors(form.currency) }}
+		</div>
+		<div class="form-group mb-4">
+			{{ form_label(form.amount) }}
+			{{ form_widget(form.amount) }}
+			{{ form_errors(form.amount) }}
+		</div>
+		<div class="form-group">
+			{{ form_row(form.save)}}
+		</div>
+		{{ form_end(form)}}
+	</main>
+{% endblock %}

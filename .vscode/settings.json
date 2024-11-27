@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "*.html": "html"
+    },
+    "emmet.includeLanguages": {
+        "twig": "html"
+    },
+    "prettier.documentSelectors": ["**/*.{twig,html}"],
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[twig]": {
+        "editor.defaultFormatter": "mblode.twig-language-2"
+    }
+}

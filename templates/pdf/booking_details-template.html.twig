@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			@page {
+				size: A4;
+				margin-top: 4in;
+			}
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 20px;
+			}
+
+			table {
+				width: 100%;
+				border-collapse: collapse;
+			}
+
+			.table--booking-details tr {
+				width: 100%;
+				border-bottom: 1px dashed #000;
+			}
+
+			.table--booking-details tr td {
+				padding: 10px 20px;
+			}
+
+			.table--booking-details td:first-child {
+				width: 150px;
+				padding-left: 0;
+			}
+
+			.table--booking-details td:last-child {
+				text-align: right;
+			}
+
+			.table--order-summary tr td {
+				padding: 10px 20px;
+				border-bottom: 1px solid #000;
+			}
+
+			.table--order-summary td:first-child {
+				width: 200px;
+				padding-left: 0;
+				font-weight: 600;
+			}
+
+			.table--order-summary tr > td:last-child {
+				text-align: right;
+			}
+
+			.table--order-summary tr:last-child > td {
+				margin-top: 1rem;
+				text-align: right;
+				font-size: 1.5rem;
+			}
+		</style>
+	</head>
+	<body>
+		<center>
+			<b>eventbits</b>
+		</center>
+		<hr>
+		<h3>You are attending</h3>
+		<h2>{{ event.name }}</h2>
+
+		<section style="margin:2rem 0;">
+			<h3>Event Details</h3>
+
+			<div style="margin:1rem 0;">
+				<h4>Date:</h4>
+				<time>
+					{{ event.date.start}}
+					-
+					{{ event.date.end }}
+				</time>
+			</div>
+			<div style="margin:1rem 0;">
+				<h4>Time:</h4>
+				<time>
+					{{ event.time.start }}
+					-
+					{{event.time.end}}
+				</time>
+			</div>
+			<div style="margin:1rem 0;">
+				<h4>Location:</h4>
+				<address>{{ event.location }}</address>
+			</div>
+		</section>
+
+		<h3>Booking Details</h3>
+		<table class="table--booking-details">
+			<tbody>
+				{% for ticket in tickets %}
+					<tr class="tr-dashed">
+						<td>
+							<img width="150" height="150" src="{{ ticket.qrCode }}"/>
+						</td>
+						<td>
+							<p>{{ ticket.name }}</p>
+							<p>Booking ID:
+								{{ ticket.bookingId }}</p>
+						</td>
+						<td>
+							<p>{{ ticket.currency }}
+								{{ ticket.price|number_format(2, ',', '.') }}</p>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<h3 style="{% if tickets|length > 3 %}margin-top:17rem;{% else %}margin-top:3rem;{% endif %}">Order Summary</h3>
+		<p>
+			<b>Status:</b>
+			Completed</p>
+		<p>
+			<b>Payment method:</b>
+			PayPal</p>
+		<table class="table--order-summary">
+			<tbody>
+				<tr>
+					<td>Total amount:</td>
+					<td>
+						{{ order_summary.total_amount.currency}}
+						{{order_summary.total_amount.price|number_format(2, ',', '.')}}
+					</td>
+				</tr>
+				<tr>
+					<td>Discount:</td>
+					<td>
+						{{ order_summary.discount.currency }}
+						{{ order_summary.discount.price|number_format(2, ',', '.') }}
+					</td>
+				</tr>
+				<tr>
+					<td>Service fee:</td>
+					<td>
+						{{ order_summary.service_fee.currency }}
+						{{ order_summary.service_fee.price|number_format(2, ',', '.') }}
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						{{ order_summary.total_amount.currency }}
+						{{ (order_summary.total_amount.price + order_summary.service_fee.price)|number_format(2, ',', '.') }}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<section style="font-size: 0.8rem; color: #666; {% if tickets|length == 3 %}margin-top: 8rem;{% else %}margin-top: 2rem;{% endif %}">
+			<h3>Disclaimer</h3>
+			<p>
+				Please note that the event details, ticket information, and order summary provided in this document are for reference purposes only. All bookings are subject to the terms and conditions of the event organizer. Tickets are non-refundable and non-transferable unless explicitly stated.</p>
+			<p>
+				We are not responsible for lost, stolen, or damaged tickets or any issues arising from incorrect information provided at the time of booking. By attending the event, you agree to comply with all rules and policies set by the organizer.
+			</p>
+		</section>
+	</body>
+</html>

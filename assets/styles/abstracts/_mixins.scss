@@ -1,0 +1,27 @@
+/// Responsive breakpoint manager
+/// 
+/// @author ffakira
+/// 
+/// @access public
+/// 
+/// @param {String $breakpoint} - xs | sm | md | lg | xl | 2xl
+/// @requires $breakpoints
+/// 
+/// @example scss - respond-to mixin
+///    .foo {
+///      width: 100%;
+///        @include respond-to(sm) {
+///          width: 50%;
+///        }
+///      }
+///    }
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  } else {
+    @error "Invalid breakpoint: `#{$breakpoint}`." +
+      "Please use one of the following: #{map-keys($breakpoints)}.";
+  }
+}

@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Events |
+	{{ event.id }}
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<h1>{{event.name}}</h1>
+		<div>
+			<time class="text-muted">
+				{{ event.startDate|date('M d, Y') }}
+				at
+				{{ event.startTime|date('H:i') }}
+			</time>
+			<p class="text-muted">{{event.description}}</p>
+			<p>Location:
+				{{event.location}}
+			</p>
+
+			<div>
+				{{ form_start(form) }}
+				<h2>Purchase Tickets</h2>
+				{% if event.tickets is empty %}
+					<div class="alert alert-info" role="alert">
+						No tickets found.
+					</div>
+				{% endif %}
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Price</th>
+							<th>Quantity</th>
+						</tr>
+					</thead>
+					{% for ticket in event.tickets %}
+						<tr>
+							<td>
+								{{ ticket.name }}
+							</td>
+							<td>
+								{{ ticket.price|number_format(2, '.', ',') }}
+								{{ ticket.currency }}
+							</td>
+							<td>
+								{{ form_widget(form.quantity) }}
+							</td>
+						</tr>
+					{% endfor %}
+				</table>
+				<div>{{ form_row(form.save) }}</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</main>
+{% endblock %}

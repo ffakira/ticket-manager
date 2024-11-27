@@ -1,0 +1,16 @@
+:root {
+    --background-color: #1b1b1b;
+    --text-color: #ffffff;
+}
+
+/// Breakpoints
+/// @access public
+/// @type Map
+$breakpoints: (
+  'xs': (min-width: 0),
+  'sm': (min-width: 576px),
+  'md': (min-width: 768px),
+  'lg': (min-width: 1024px),
+  'xl': (min-width: 1280px),
+  '2xl': (min-width: 1536px)
+);

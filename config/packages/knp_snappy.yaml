@@ -1,0 +1,9 @@
+knp_snappy:
+    pdf:
+        enabled: true
+        binary: '%env(WKHTMLTOPDF_PATH)%'
+        options:
+            margin-top: 10mm
+            margin-right: 10mm
+            margin-bottom: 10mm
+            margin-left: 10mm

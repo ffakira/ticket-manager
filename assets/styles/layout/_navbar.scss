@@ -1,0 +1,19 @@
+.navbar {
+    background-color: white;
+    padding: 2rem 4rem;
+
+    &-brand {
+        color: black;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
