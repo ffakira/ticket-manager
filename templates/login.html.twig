@@ -4,4 +4,20 @@
 	eventbrite | Login
 {% endblock %}
 
-{% block body %}{% endblock %}
+{% block body %}
+	<main class="container">
+		<h1>Login</h1>
+		{{ form_start(form) }}
+		<div class="form-group mb-4">
+			{{ form_label(form.email) }}
+			{{ form_widget(form.email) }}
+			{{ form_errors(form.email) }}
+		</div>
+		<div class="form-group mb-4">
+			{{ form_label(form.password) }}
+			{{ form_widget(form.password) }}
+			{{ form_errors(form.password) }}
+		</div>
+		{{ form_end(form) }}
+	</main>
+{% endblock %}

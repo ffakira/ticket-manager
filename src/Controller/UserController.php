@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\LoginType;
+use App\Form\RegisterType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,6 +34,17 @@ class UserController extends AbstractController {
     public function register(Request $request) {
         $user = new User();
 
-        return $this->render('register.html.twig');
+        $form = $this->createForm(RegisterType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            /**
+             * @TODO missing implementation & validation
+             */
+        }
+
+        return $this->render('register.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 }

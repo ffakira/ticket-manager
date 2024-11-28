@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class LoginType extends AbstractType {
+class RegisterType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add('email', EmailType::class, [
@@ -21,7 +21,7 @@ class LoginType extends AbstractType {
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Enter your email address'
-                ],
+                ]
             ])
             ->add('password', PasswordType::class, [
                 'label' => 'Password',
@@ -30,14 +30,14 @@ class LoginType extends AbstractType {
                 ],
                 'attr' => [
                     'class' => 'form-control',
-                    'placeholder' => 'Enter your password',
-                ],
+                    'placeholder' => 'Enter your password'
+                ]
             ])
             ->add('save', SubmitType::class, [
-                'label' => 'Login',
+                'label' => 'Register',
                 'attr' => [
                     'class' => 'btn btn-primary mt-3'
-                ],
+                ]
             ]);
     }
 
