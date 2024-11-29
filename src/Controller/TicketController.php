@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Ticket;
 use App\Entity\Event;
 use App\Form\TicketType;
+use App\Repository\EventRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,6 +16,11 @@ class TicketController extends AbstractController {
     #[Route('/dashboard/tickets/create', name: 'ticket_create', methods: ['GET', 'POST'])]
     public function dashboardCreateTickets(Request $request, EntityManagerInterface $entityManager): Response {
         $ticket = new Ticket();
+        $user = $this->getUser();
+
+        if (!$user) {
+            throw $this->createAccessDeniedException('You must be logged in to create a ticket');
+        }
 
         $form = $this->createForm(TicketType::class, $ticket);
         $form->handleRequest($request);
@@ -24,10 +30,11 @@ class TicketController extends AbstractController {
             $event = $entityManager->getRepository(Event::class)->find($eventId);
 
             if (!$event) {
-                throw $this->createNotFoundException('The event does not exist');
+                return $this->redirectToRoute('ticket_create');
             }
 
             $ticket->setEvent($event);
+            $ticket->setUser($user);
 
             $entityManager->persist($ticket);
             $entityManager->flush();

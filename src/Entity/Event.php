@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Form\Validator\EventEndDateConstraint;
 use App\Repository\EventRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -59,11 +60,16 @@ class Event {
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $updatedAt = null;
 
-    #[Orm\OneToMany(mappedBy: 'event', targetEntity: Ticket::class, cascade: ['persist', 'remove'])]
+    #[Orm\OneToMany(mappedBy: 'event', targetEntity: Ticket::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $tickets;
+
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'events')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
 
     public function __construct() {
         $this->createdAt = new \DateTimeImmutable();
+        $this->tickets = new ArrayCollection();
     }
 
     public function getId(): ?int {
@@ -170,6 +176,15 @@ class Event {
                 $ticket->setEvent(null);
             }
         }
+        return $this;
+    }
+
+    public function getUser(): ?User {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static {
+        $this->user = $user;
         return $this;
     }
 }

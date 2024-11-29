@@ -22,6 +22,15 @@ class EventRepository extends ServiceEntityRepository {
             ->getResult();
     }
 
+    public function findByUserIdEvents(int $userId): array {
+        return $this->createQueryBuilder('e')
+            ->orderBy('e.createdAt', 'DESC')
+            ->andWhere('e.user = :userId')
+            ->setParameter('userId', $userId)
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return Event[] Returns an array of Event objects
     //     */

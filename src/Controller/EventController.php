@@ -28,79 +28,79 @@ class EventController extends AbstractController {
             }
         }
 
-        dd($events);
+        // dd($events);
 
-        $events = [
-            [
-                'id' => 1,
-                'name' => 'Tomorrow Land 2025 - this is a long string',
-                'description' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
-                'thumbnail' => 'https://placehold.co/600x400/000000/FFFFFF/png',
-                'date' => [
-                    'start' => 'Jun 4, 2025',
-                    'end' => 'Jun 6, 2025',
-                ],
-                'time' => [
-                    'start' => '10:00',
-                    'end' => '22:00',
-                ],
-                'attendees' => [
-                    'total' => 24,
-                    'users' => [
-                        [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
-                        [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
-                        [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
-                        [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
-                    ]
-                ],
-            ],
-            [
-                'id' => 2,
-                'name' => 'Rock in Rio 2025',
-                'description' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
-                'thumbnail' => 'https://placehold.co/600x400/000000/FFFFFF/png',
-                'date' => [
-                    'start' => 'Jun 4, 2025',
-                    'end' => 'Jun 6, 2025',
-                ],
-                'time' => [
-                    'start' => '10:00',
-                    'end' => '22:00',
-                ],
-                'attendees' => [
-                    'total' => 398,
-                    'users' => [
-                        [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
-                        [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
-                        [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
-                        [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
-                    ]
-                ],
-            ],
-            [
-                'id' => 3,
-                'name' => 'Lollapalooza 2025',
-                'description' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
-                'thumbnail' => 'https://placehold.co/600x400/000000/FFFFFF/png',
-                'date' => [
-                    'start' => 'Jun 4, 2025',
-                    'end' => 'Jun 6, 2025',
-                ],
-                'time' => [
-                    'start' => '10:00',
-                    'end' => '22:00',
-                ],
-                'attendees' => [
-                    'total' => 288,
-                    'users' => [
-                        [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
-                        [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
-                        [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
-                        [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
-                    ],
-                ],
-            ],
-        ];
+        // $events = [
+        //     [
+        //         'id' => 1,
+        //         'name' => 'Tomorrow Land 2025 - this is a long string',
+        //         'description' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
+        //         'thumbnail' => 'https://placehold.co/600x400/000000/FFFFFF/png',
+        //         'date' => [
+        //             'start' => 'Jun 4, 2025',
+        //             'end' => 'Jun 6, 2025',
+        //         ],
+        //         'time' => [
+        //             'start' => '10:00',
+        //             'end' => '22:00',
+        //         ],
+        //         'attendees' => [
+        //             'total' => 24,
+        //             'users' => [
+        //                 [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
+        //                 [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
+        //                 [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
+        //                 [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
+        //             ]
+        //         ],
+        //     ],
+        //     [
+        //         'id' => 2,
+        //         'name' => 'Rock in Rio 2025',
+        //         'description' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
+        //         'thumbnail' => 'https://placehold.co/600x400/000000/FFFFFF/png',
+        //         'date' => [
+        //             'start' => 'Jun 4, 2025',
+        //             'end' => 'Jun 6, 2025',
+        //         ],
+        //         'time' => [
+        //             'start' => '10:00',
+        //             'end' => '22:00',
+        //         ],
+        //         'attendees' => [
+        //             'total' => 398,
+        //             'users' => [
+        //                 [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
+        //                 [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
+        //                 [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
+        //                 [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
+        //             ]
+        //         ],
+        //     ],
+        //     [
+        //         'id' => 3,
+        //         'name' => 'Lollapalooza 2025',
+        //         'description' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
+        //         'thumbnail' => 'https://placehold.co/600x400/000000/FFFFFF/png',
+        //         'date' => [
+        //             'start' => 'Jun 4, 2025',
+        //             'end' => 'Jun 6, 2025',
+        //         ],
+        //         'time' => [
+        //             'start' => '10:00',
+        //             'end' => '22:00',
+        //         ],
+        //         'attendees' => [
+        //             'total' => 288,
+        //             'users' => [
+        //                 [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
+        //                 [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
+        //                 [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
+        //                 [ 'avatar' => 'https://placehold.co/600x400/000000/FFFFFF/png'],
+        //             ],
+        //         ],
+        //     ],
+        // ];
 
         return $this->render('events/index.html.twig', [
             'events' => $events,
@@ -174,12 +174,35 @@ class EventController extends AbstractController {
     #[Route('/dashboard/events/create', name: 'events_create', methods: ['GET', 'POST'])]
     public function dashboardCreateEvents(Request $request, EntityManagerInterface $entityManager): Response {
         $event = new Event();
+        $user = $this->getUser();
+
+        if (!$user) {
+            throw $this->createAccessDeniedException('You must be logged in to create an event');
+        }
 
         $form = $this->createForm(EventType::class, $event);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $event->setUser($user);
+
             $entityManager->persist($event);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('ticket_create');
+        }
+
+        return $this->render('dashboard/events.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/dashboard/events/{id}/edit', name: 'events_edit', methods: ['GET', 'POST'])]
+    public function dashboardUpdateEvents(Request $request, EntityManagerInterface $entityManager, Event $event): Response {
+        $form = $this->createForm(EventType::class, $event);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
             return $this->redirectToRoute('events');
@@ -188,5 +211,6 @@ class EventController extends AbstractController {
         return $this->render('dashboard/events.html.twig', [
             'form' => $form->createView(),
         ]);
+
     }
 }

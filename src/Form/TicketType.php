@@ -4,8 +4,9 @@ namespace App\Form;
 
 use App\Entity\Ticket;
 use App\Entity\Event;
-
+use App\Repository\EventRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -17,7 +18,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class TicketType extends AbstractType {
 
+    public function __construct(
+        private EventRepository $eventRepository,
+        private Security $security
+    ) {}
+
     public function buildForm(FormBuilderInterface $builder, array $options) {
+        $user = $this->security->getUser();
+
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Ticket Name',
@@ -41,6 +49,12 @@ class TicketType extends AbstractType {
                     'class' => 'form-control mt-2'
                 ],
                 'placeholder' => 'Select the event',
+                'query_builder' => function (EventRepository $er) use ($user) {
+                    return $er->createQueryBuilder('e')
+                        ->where('e.user = :user')
+                        ->setParameter('user', $user)
+                        ->orderBy('e.name', 'ASC');
+                },
             ])
             ->add('price', NumberType::class, [
                 'label' => 'Ticket Price',

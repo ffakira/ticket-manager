@@ -30,6 +30,10 @@ class PurchaseTicket {
     #[ORM\JoinColumn(nullable: false)]
     private ?Ticket $ticket = null;
 
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     public function __construct() {
         $this->createdAt = new \DateTimeImmutable();
     }
@@ -71,6 +75,15 @@ class PurchaseTicket {
 
     public function setTicket(?Ticket $ticket): static {
         $this->ticket = $ticket;
+        return $this;
+    }
+
+    public function getUser(): ?User {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static {
+        $this->user = $user;
         return $this;
     }
 }

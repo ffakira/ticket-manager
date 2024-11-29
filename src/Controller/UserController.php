@@ -41,4 +41,7 @@ class UserController extends AbstractController {
             'form' => $form->createView(),
         ]);
     }
+
+    #[Route('/logout', name: 'app_logout')]
+    public function logout(): void {}
 }

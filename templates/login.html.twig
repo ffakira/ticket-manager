@@ -7,6 +7,11 @@
 {% block body %}
 	<main class="container">
 		<h1>Login</h1>
+		{% if error %}
+			<div>
+				{{ error.messageKey|trans(error.messageData, 'security') }}
+			</div>
+		{% endif %}
 		<form action="{{path('app_login')}}" method="POST">
 			<input type="hidden" name="_target_path" value="/"/>
 			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
