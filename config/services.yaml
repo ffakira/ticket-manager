@@ -26,3 +26,11 @@ services:
   App\Form\Validator\:
     resource: "../src/Form/Validator"
     tags: ["validator.constraint_validator"]
+
+  App\Service\CloudflareR2Storage:
+    arguments:
+      $accessKeyId: "%env(CLOUDFARE_R2_ACCESS_KEY_ID)%"
+      $secretAccessKey: "%env(CLOUDFARE_R2_SECRET_ACCESS_KEY)%"
+      $bucketName: "%env(CLOUDFARE_R2_BUCKET_NAME)%"
+      $region: "%env(CLOUDFARE_R2_REGION)%"
+      $endpoint: "%env(CLOUDFARE_R2_ENDPOINT)%"

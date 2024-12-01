@@ -2,20 +2,25 @@
 
 {% block title %}
 	Events |
-	{{ event.id }}
+	{{ event.name }}
 {% endblock %}
 
 {% block body %}
 	<main class="container">
 		<h1>{{event.name}}</h1>
 		<div>
-			<time class="text-muted">
+			<time class="text-white">
+				<i class="bi bi-calendar-event"></i>
 				{{ event.startDate|date('M d, Y') }}
 				at
 				{{ event.startTime|date('H:i') }}
 			</time>
-			<p class="text-muted">{{event.description}}</p>
-			<p>Location:
+			<p class="text-white">{{event.description}}</p>
+			<p class="text-white">
+				<b>
+					<i class="bi bi-geo-alt-fill"></i>
+					Location:
+				</b>
 				{{event.location}}
 			</p>
 
@@ -27,12 +32,12 @@
 						No tickets found.
 					</div>
 				{% endif %}
-				<table class="table">
+				<table class="table table-dark">
 					<thead>
 						<tr>
-							<th>Name</th>
-							<th>Price</th>
-							<th>Quantity</th>
+							<th scope="col">Name</th>
+							<th scope="col">Price</th>
+							<th scope="col">Quantity</th>
 						</tr>
 					</thead>
 					{% for ticket in event.tickets %}
